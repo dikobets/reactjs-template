@@ -1,0 +1,50 @@
+/* CategoryList component styles - horizontal scrolling menu */
+
+.category-list {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.category-list__container {
+  /* Flexbox для горизонтального розташування */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  
+  /* Горизонтальний скрол */
+  overflow-x: auto;
+  overflow-y: hidden;
+  
+  /* Padding згідно з Figma: px-4 py-0 = padding: 0 16px */
+  padding: 0 16px;
+  
+  /* Gap між елементами: gap-2 = 8px */
+  gap: 8px;
+  
+  /* Забираємо скролбар на webkit браузерах */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Приховуємо скролбар для webkit браузерів */
+.category-list__container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Додаткові стилі для кращого UX скролу */
+.category-list__container {
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  
+  /* Snap scrolling для кращого UX на мобільних */
+  scroll-snap-type: x mandatory;
+}
+
+/* Кожна категорія має snap до початку */
+.category-list__container .category-card {
+  scroll-snap-align: start;
+  flex-shrink: 0; /* Не дозволяємо стискатися */
+} 

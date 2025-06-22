@@ -1,0 +1,69 @@
+.header {
+  width: 100%;
+  background: transparent; /* Let main app background show through */
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  box-sizing: border-box;
+}
+
+.header__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.header__content {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--lets-eat-spacing-md);
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--lets-eat-spacing-md);
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.header__title {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-title);
+  line-height: var(--line-height-title);
+  color: var(--tg-theme-text-color);
+  text-align: left;
+  width: 100%;
+  margin: 0;
+  letter-spacing: 0.07px;
+}
+
+.header__title-text {
+  font-family: var(--lets-eat-font-family);
+  font-weight: var(--lets-eat-font-title-weight);
+  font-style: normal;
+  font-size: var(--lets-eat-font-title-size);
+  line-height: var(--lets-eat-font-title-line);
+  letter-spacing: 0.07px;
+  color: var(--lets-eat-text);
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Додаткові стилі для кращої інтеграції з темами */
+@media (prefers-color-scheme: dark) {
+  .header {
+    background-color: var(--tg-theme-bg-color, #0f0f0f);
+  }
+  
+  .header__title-text {
+    color: var(--tg-theme-text-color, #ffffff);
+  }
+} 

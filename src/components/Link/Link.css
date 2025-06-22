@@ -1,4 +1,13 @@
 .link {
-  text-decoration: none;
   color: var(--tg-theme-link-color);
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-text);
+  font-weight: var(--font-weight-text-regular);
+  line-height: var(--line-height-text);
+}
+
+.link:hover {
+  text-decoration: underline;
 }
