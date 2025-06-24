@@ -1,5 +1,5 @@
-import { IndexPage } from '@/pages/IndexPage/IndexPage.tsx';
+import { App } from './App';
 
 export function Root() {
-  return <IndexPage />;
+  return <App />;
 }

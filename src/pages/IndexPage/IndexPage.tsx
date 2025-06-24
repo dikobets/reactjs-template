@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import { Header } from '@/components/Header';
 import { Search } from '@/components/Search';
 import { CategoryList, Category } from '@/components/CategoryList';
+import { Link } from '@/components/Link/Link';
 
 // Імпорти іконок
 import breakfastIcon from '@/assets/icons/category-breakfast.png';
@@ -49,6 +50,31 @@ export const IndexPage: FC = () => {
             categories={testCategories}
             onCategoryClick={handleCategoryClick}
           />
+        </div>
+        
+        {/* Demo link for development */}
+        <div style={{ 
+          marginTop: '24px', 
+          padding: '16px', 
+          backgroundColor: 'var(--tg-theme-secondary-bg-color)',
+          borderRadius: '12px'
+        }}>
+          <h3 style={{ 
+            color: 'var(--tg-theme-text-color)', 
+            margin: '0 0 8px 0',
+            fontSize: '16px'
+          }}>
+            Development Demo
+          </h3>
+          <Link 
+            to="/recipe-card-demo"
+            style={{ 
+              color: 'var(--tg-theme-link-color)',
+              textDecoration: 'none'
+            }}
+          >
+            → Recipe Card States Demo
+          </Link>
         </div>
       </div>
     </div>
