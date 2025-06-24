@@ -1,125 +1,56 @@
-import { Section } from '@telegram-apps/telegram-ui';
 import type { FC } from 'react';
-
-import { Page } from '@/components/Page.tsx';
 import { Header } from '@/components/Header';
-import { CategoryCard } from '@/components/CategoryCard';
+import { Search } from '@/components/Search';
 import { CategoryList, Category } from '@/components/CategoryList';
 
-// Локальні іконки категорій
-import categorySnacksIcon from '@/assets/icons/category-snacks.png';
-import categoryBreakfastIcon from '@/assets/icons/category-breakfast.png';
-import categoryLunchIcon from '@/assets/icons/category-lunch.png';
-import categoryDinnerIcon from '@/assets/icons/category-dinner.png';
-import categoryDrinksIcon from '@/assets/icons/category-drinks.png';
-import categoryDessertsIcon from '@/assets/icons/category-desserts.png';
+// Імпорти іконок
+import breakfastIcon from '@/assets/icons/category-breakfast.png';
+import lunchIcon from '@/assets/icons/category-lunch.png';
+import dinnerIcon from '@/assets/icons/category-dinner.png';
+import snacksIcon from '@/assets/icons/category-snacks.png';
+import dessertsIcon from '@/assets/icons/category-desserts.png';
+import drinksIcon from '@/assets/icons/category-drinks.png';
 
-// Тестові дані для CategoryList з локальними іконками
+// Дані з правильними іконками
 const testCategories: Category[] = [
-  {
-    id: '1',
-    title: 'Перекуси',
-    icon: categorySnacksIcon
-  },
-  {
-    id: '2', 
-    title: 'Сніданок',
-    icon: categoryBreakfastIcon
-  },
-  {
-    id: '3',
-    title: 'Обід', 
-    icon: categoryLunchIcon
-  },
-  {
-    id: '4',
-    title: 'Вечеря',
-    icon: categoryDinnerIcon
-  },
-  {
-    id: '5',
-    title: 'Напої',
-    icon: categoryDrinksIcon
-  },
-  {
-    id: '6',
-    title: 'Десерти',
-    icon: categoryDessertsIcon
-  }
+  { id: '1', title: 'Сніданок', icon: breakfastIcon },
+  { id: '2', title: 'Обід', icon: lunchIcon },
+  { id: '3', title: 'Вечеря', icon: dinnerIcon },
+  { id: '4', title: 'Перекуси', icon: snacksIcon },
+  { id: '5', title: 'Десерти', icon: dessertsIcon },
+  { id: '6', title: 'Напої', icon: drinksIcon },
 ];
 
 export const IndexPage: FC = () => {
   const handleCategoryClick = (category: Category) => {
-    console.log('Category clicked:', category);
+    console.log('Clicked category:', category);
+  };
+
+  const handleSearchChange = (value: string) => {
+    console.log('Search value:', value);
   };
 
   return (
-    <Page back={false}>
-      <Header />
+    <div style={{ 
+      minHeight: '100vh'
+    }}>
+      <Header title="Let's Eat Mini App" />
       
-      {/* CategoryList - Horizontal Scroll Menu */}
-      <Section
-        header="Категорії"
-        footer="Горизонтальний скрол меню категорій згідно з Figma дизайном"
-      >
-        <CategoryList 
-          categories={testCategories}
-          onCategoryClick={handleCategoryClick}
+      <div style={{ 
+        padding: '16px'
+      }}>
+        <Search 
+          placeholder="Знайти рецепт"
+          onChange={handleSearchChange}
         />
-      </Section>
-
-      {/* CategoryList Loading State */}
-      <Section
-        header="Завантаження категорій"
-        footer="Стан завантаження з skeleton елементами"
-      >
-        <CategoryList 
-          categories={[]}
-          loading={true}
-        />
-      </Section>
-      
-      {/* CategoryCard Testing Section */}
-      <Section
-        header="Category Cards"
-        footer="Тестування різних станів CategoryCard компонента"
-      >
-        <div style={{ 
-          display: 'flex', 
-          gap: '16px',
-          padding: '16px',
-          flexWrap: 'wrap'
-        }}>
-          <CategoryCard 
-            state="skeleton"
-            title="Завантаження..."
-          />
-          
-          <CategoryCard 
-            state="default"
-            icon={categorySnacksIcon}
-            title="Перекуси"
-          />
-          
-          <CategoryCard 
-            state="hover"
-            icon={categorySnacksIcon}
-            title="Перекуси (Hover)"
-          />
-          
-          <CategoryCard 
-            state="press"
-            icon={categorySnacksIcon}
-            title="Перекуси (Press)"
-          />
-          
-          <CategoryCard 
-            state="default"
-            icon={categorySnacksIcon}
-            title="Дуже довга назва категорії"
+        
+        <div style={{ marginTop: '16px' }}>
+          <CategoryList 
+            categories={testCategories}
+            onCategoryClick={handleCategoryClick}
           />
         </div>
-      </Section>
-    </Page>
+      </div>
+    </div>
   );
 };
