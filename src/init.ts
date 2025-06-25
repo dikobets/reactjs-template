@@ -62,13 +62,13 @@ export async function init(options: {
   // Mount all components used in the project.
   mountBackButton.ifAvailable();
   restoreInitData();
-  
-  if (miniApp.mountSync.isAvailable()) {
-    miniApp.mountSync();
-    bindThemeParamsCssVars();
+
+  if (miniApp.mount.isAvailable()) {
+    miniApp.mount();
   }
 
   mountViewport.isAvailable() && mountViewport().then(() => {
+    bindThemeParamsCssVars();
     bindViewportCssVars();
   });
 }

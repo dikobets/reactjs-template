@@ -6,6 +6,7 @@ import { LaunchParamsPage } from '@/pages/LaunchParamsPage.tsx';
 import { ThemeParamsPage } from '@/pages/ThemeParamsPage.tsx';
 import { TONConnectPage } from '@/pages/TONConnectPage/TONConnectPage';
 import { RecipeCardDemo } from '@/pages/RecipeCardDemo';
+import { RecipeListDemo } from '@/pages/RecipeListDemo';
 
 interface Route {
   path: string;
@@ -20,6 +21,7 @@ export const routes: Route[] = [
   { path: '/theme-params', Component: ThemeParamsPage, title: 'Theme Params' },
   { path: '/launch-params', Component: LaunchParamsPage, title: 'Launch Params' },
   { path: '/recipe-card-demo', Component: RecipeCardDemo, title: 'Recipe Card Demo' },
+  { path: '/recipe-list-demo', Component: RecipeListDemo, title: 'Recipe List Demo' },
   {
     path: '/ton-connect',
     Component: TONConnectPage,

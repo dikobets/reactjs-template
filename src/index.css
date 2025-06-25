@@ -39,13 +39,13 @@ body {
 }
 
 /* Global utility classes based on design system */
-.text-primary { color: var(--lets-eat-text); }
-.text-secondary { color: var(--lets-eat-text-secondary); }
-.text-tertiary { color: var(--lets-eat-text-tertiary); }
+.text-primary { color: var(--tg-theme-text-color); }
+.text-secondary { color: var(--tg-theme-subtitle-text-color); }
+.text-tertiary { color: var(--tg-theme-hint-color); }
 
-.bg-primary { background-color: var(--lets-eat-bg-primary); }
-.bg-secondary { background-color: var(--lets-eat-bg-secondary); }
-.bg-tertiary { background-color: var(--lets-eat-tertiary-bg); }
+.bg-primary { background-color: var(--tg-theme-bg-color); }
+.bg-secondary { background-color: var(--tg-theme-secondary-bg-color); }
+.bg-tertiary { background-color: var(--tg-theme-section-bg-color); }
 
-.accent { color: var(--lets-eat-accent); }
-.link { color: var(--lets-eat-link); }
+.accent { color: var(--tg-theme-accent-text-color); }
+.link { color: var(--tg-theme-link-color); }

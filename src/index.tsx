@@ -5,17 +5,30 @@ import ReactDOM from 'react-dom/client';
 import { StrictMode } from 'react';
 
 import { Root } from '@/components/Root.tsx';
+import { init } from '@/init.ts';
 
 import './index.css';
 
-// Mock the environment in case, we are outside Telegram.
-import './mockEnv.ts';
-
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 
-// Simple render without complex initialization to avoid SDK errors
-root.render(
-  <StrictMode>
-    <Root/>
-  </StrictMode>
-);
+async function renderApp() {
+  // Mock the environment in case we are outside Telegram.
+  if (import.meta.env.DEV) {
+    await import('./mockEnv.ts');
+  }
+  
+  await init({
+    debug: import.meta.env.DEV,
+    eruda: import.meta.env.DEV,
+    mockForMacOS: import.meta.env.DEV,
+  });
+
+  // Simple render without complex initialization to avoid SDK errors
+  root.render(
+    <StrictMode>
+      <Root/>
+    </StrictMode>
+  );
+}
+
+renderApp();

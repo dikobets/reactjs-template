@@ -1,10 +1,7 @@
 import { FC } from 'react';
 import { RecipeCard } from '@/components/RecipeCard';
-import receptImage from '@/assets/icons/recept-image.png';
 
 export const RecipeCardDemo: FC = () => {
-  // Sample image URL for testing - using local image
-  const sampleImageUrl = receptImage;
 
   const handleCardClick = (state: string) => {
     console.log(`Clicked card with state: ${state}`);

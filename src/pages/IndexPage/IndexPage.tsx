@@ -33,12 +33,15 @@ export const IndexPage: FC = () => {
 
   return (
     <div style={{ 
-      minHeight: '100vh'
+      minHeight: '100vh',
+      backgroundColor: 'var(--tg-theme-bg-color)',
+      color: 'var(--tg-theme-text-color)'
     }}>
       <Header title="Let's Eat Mini App" />
       
       <div style={{ 
-        padding: '16px'
+        padding: '16px',
+        backgroundColor: 'var(--tg-theme-bg-color)'
       }}>
         <Search 
           placeholder="Знайти рецепт"
@@ -61,20 +64,31 @@ export const IndexPage: FC = () => {
         }}>
           <h3 style={{ 
             color: 'var(--tg-theme-text-color)', 
-            margin: '0 0 8px 0',
+            margin: '0 0 12px 0',
             fontSize: '16px'
           }}>
             Development Demo
           </h3>
-          <Link 
-            to="/recipe-card-demo"
-            style={{ 
-              color: 'var(--tg-theme-link-color)',
-              textDecoration: 'none'
-            }}
-          >
-            → Recipe Card States Demo
-          </Link>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <Link 
+              to="/recipe-card-demo"
+              style={{ 
+                color: 'var(--tg-theme-link-color)',
+                textDecoration: 'none'
+              }}
+            >
+              → Recipe Card States Demo
+            </Link>
+            <Link 
+              to="/recipe-list-demo"
+              style={{ 
+                color: 'var(--tg-theme-link-color)',
+                textDecoration: 'none'
+              }}
+            >
+              → Recipe List Demo
+            </Link>
+          </div>
         </div>
       </div>
     </div>
