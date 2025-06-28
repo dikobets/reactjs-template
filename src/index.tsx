@@ -12,18 +12,13 @@ import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 
 async function renderApp() {
-  // Mock the environment in case we are outside Telegram.
-  if (import.meta.env.DEV) {
-    await import('./mockEnv.ts');
-  }
-  
   await init({
     debug: import.meta.env.DEV,
-    eruda: import.meta.env.DEV,
-    mockForMacOS: import.meta.env.DEV,
+    eruda: true, // Always enable Eruda for better debugging
+    mockForMacOS: false, // We don't need macOS mocking anymore
   });
 
-  // Simple render without complex initialization to avoid SDK errors
+  // Simple render without complex initialization
   root.render(
     <StrictMode>
       <Root/>
