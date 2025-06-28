@@ -1,14 +1,21 @@
 @import './css/variables.css';
 
 html {
+  height: 100%;
   font-family: var(--font-family-primary);
 }
 
 body {
+  height: 100%;
   margin: 0;
   background-color: var(--tg-theme-bg-color);
   color: var(--tg-theme-text-color);
-  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#root {
+  height: 100%;
 }
 
 .text-xs {

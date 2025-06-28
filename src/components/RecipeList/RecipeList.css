@@ -28,7 +28,6 @@
   align-items: center;
   justify-content: center;
   min-height: 400px;
-  padding: 32px 16px;
 }
 
 /* Responsive Breakpoints Based on Plan */
@@ -86,17 +85,28 @@
 .recipe-list__empty-state {
   text-align: center;
   max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .recipe-list__empty-icon {
   margin-bottom: 16px;
   color: var(--tg-theme-hint-color);
   opacity: 0.6;
+  width: 80px;
+  height: 80px;
+}
+
+.recipe-list__empty-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .recipe-list__empty-title {
   font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 600;
   line-height: 24px;
   color: var(--tg-theme-text-color);
@@ -105,9 +115,9 @@
 
 .recipe-list__empty-description {
   font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 22px;
   color: var(--tg-theme-hint-color);
   margin: 0;
 }
@@ -116,17 +126,26 @@
 .recipe-list__error-state {
   text-align: center;
   max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .recipe-list__error-icon {
   margin-bottom: 16px;
-  color: var(--tg-theme-destructive-text-color);
-  opacity: 0.8;
+  width: 80px;
+  height: 80px;
+}
+
+.recipe-list__error-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .recipe-list__error-title {
   font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 600;
   line-height: 24px;
   color: var(--tg-theme-text-color);
@@ -135,33 +154,11 @@
 
 .recipe-list__error-description {
   font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 22px;
   color: var(--tg-theme-hint-color);
-  margin: 0 0 24px 0;
-}
-
-.recipe-list__error-button {
-  background-color: var(--tg-theme-button-color);
-  color: var(--tg-theme-button-text-color);
-  border: none;
-  border-radius: 12px;
-  padding: 12px 24px;
-  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
-.recipe-list__error-button:hover {
-  opacity: 0.8;
-}
-
-.recipe-list__error-button:active {
-  opacity: 0.6;
-  transform: scale(0.98);
+  margin: 0;
 }
 
 /* Accessibility */
