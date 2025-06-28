@@ -4,7 +4,6 @@
 .recipe-list {
   display: grid;
   gap: 8px; /* Figma design spacing */
-  padding: 16px;
   width: 100%;
   box-sizing: border-box;
 }

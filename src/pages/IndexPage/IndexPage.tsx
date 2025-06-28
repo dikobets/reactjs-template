@@ -2,7 +2,10 @@ import type { FC } from 'react';
 import { Header } from '@/components/Header';
 import { Search } from '@/components/Search';
 import { CategoryList, Category } from '@/components/CategoryList';
+import { RecipeList, Recipe } from '@/components/RecipeList';
+import { SectionTitle } from '@/components/SectionTitle';
 import { Link } from '@/components/Link/Link';
+import './IndexPage.css';
 
 // Імпорти іконок
 import breakfastIcon from '@/assets/icons/category-breakfast.png';
@@ -11,8 +14,9 @@ import dinnerIcon from '@/assets/icons/category-dinner.png';
 import snacksIcon from '@/assets/icons/category-snacks.png';
 import dessertsIcon from '@/assets/icons/category-desserts.png';
 import drinksIcon from '@/assets/icons/category-drinks.png';
+import recipeImage from '@/assets/icons/recept-image.png';
 
-// Дані з правильними іконками
+// Мокові дані для категорій
 const testCategories: Category[] = [
   { id: '1', title: 'Сніданок', icon: breakfastIcon },
   { id: '2', title: 'Обід', icon: lunchIcon },
@@ -20,6 +24,14 @@ const testCategories: Category[] = [
   { id: '4', title: 'Перекуси', icon: snacksIcon },
   { id: '5', title: 'Десерти', icon: dessertsIcon },
   { id: '6', title: 'Напої', icon: drinksIcon },
+];
+
+// Мокові дані для рецептів
+const recentRecipes: Recipe[] = [
+  { id: '1', title: 'Вівсяна каша з горіхами та ягодами', imageUrl: recipeImage },
+  { id: '2', title: 'Смузі з бананом та полуницею', imageUrl: recipeImage },
+  { id: '3', title: 'Салат цезар з куркою', imageUrl: recipeImage },
+  { id: '4', title: 'Паста карбонара', imageUrl: recipeImage },
 ];
 
 export const IndexPage: FC = () => {
@@ -31,60 +43,51 @@ export const IndexPage: FC = () => {
     console.log('Search value:', value);
   };
 
+  const handleRecipeClick = (recipe: Recipe) => {
+    console.log('Clicked recipe:', recipe);
+  };
+
   return (
-    <div style={{ 
-      minHeight: '100vh',
-      backgroundColor: 'var(--tg-theme-bg-color)',
-      color: 'var(--tg-theme-text-color)'
-    }}>
-      <Header title="Let's Eat Mini App" />
-      
-      <div style={{ 
-        padding: '16px',
-        backgroundColor: 'var(--tg-theme-bg-color)'
-      }}>
+    <div className="index-page">
+      <div className="index-page__content">
+        <Header title="Привіт! Готові зберегти, знайти або щось приготувати?" />
+
         <Search 
           placeholder="Знайти рецепт"
           onChange={handleSearchChange}
         />
         
-        <div style={{ marginTop: '16px' }}>
+        <div className="index-page__categories">
           <CategoryList 
             categories={testCategories}
             onCategoryClick={handleCategoryClick}
           />
         </div>
+
+        <SectionTitle 
+          title="Останні додані"
+          className="index-page__section-title"
+        />
+
+        <RecipeList 
+          recipes={recentRecipes}
+          onRecipeClick={handleRecipeClick}
+        />
         
-        {/* Demo link for development */}
-        <div style={{ 
-          marginTop: '24px', 
-          padding: '16px', 
-          backgroundColor: 'var(--tg-theme-secondary-bg-color)',
-          borderRadius: '12px'
-        }}>
-          <h3 style={{ 
-            color: 'var(--tg-theme-text-color)', 
-            margin: '0 0 12px 0',
-            fontSize: '16px'
-          }}>
+        <div className="index-page__demo-block">
+          <h3 className="index-page__demo-title">
             Development Demo
           </h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div className="index-page__demo-links">
             <Link 
               to="/recipe-card-demo"
-              style={{ 
-                color: 'var(--tg-theme-link-color)',
-                textDecoration: 'none'
-              }}
+              className="index-page__demo-link"
             >
               → Recipe Card States Demo
             </Link>
             <Link 
               to="/recipe-list-demo"
-              style={{ 
-                color: 'var(--tg-theme-link-color)',
-                textDecoration: 'none'
-              }}
+              className="index-page__demo-link"
             >
               → Recipe List Demo
             </Link>

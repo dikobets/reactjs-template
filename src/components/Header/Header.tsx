@@ -1,26 +1,16 @@
-import { FC } from 'react';
+import { type FC } from 'react';
+import { classNames } from '@/css/classnames';
 import './Header.css';
 
 interface HeaderProps {
-  title?: string;
   className?: string;
+  title: string;
 }
 
-export const Header: FC<HeaderProps> = ({ 
-  title = "Привіт! Готові зберегти, знайти або щось приготувати?",
-  className = ""
-}) => {
+export const Header: FC<HeaderProps> = ({ className, title }) => {
   return (
-    <div className={`header ${className}`} data-name="Header">
-      <div className="header__container">
-        <div className="header__content">
-          <div className="header__title">
-            <p className="header__title-text">
-              {title}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <header className={classNames('header', className)}>
+      <h1 className="header-title">{title}</h1>
+    </header>
   );
 }; 

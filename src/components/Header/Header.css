@@ -1,13 +1,11 @@
 .header {
-  width: 100%;
-  background: transparent; /* Let main app background show through */
-  padding: var(--spacing-md);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: var(--spacing-md);
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
   box-sizing: border-box;
+  background-color: var(--tg-theme-bg-color);
+  /* padding and margin will be controlled by the parent */
 }
 
 .header__container {
@@ -55,6 +53,15 @@
   margin: 0;
   padding: 0;
   text-align: left;
+}
+
+.header-title {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-title);
+  line-height: var(--line-height-title);
+  color: var(--tg-theme-text-color);
+  margin: 0;
 }
 
 /* Додаткові стилі для кращої інтеграції з темами */

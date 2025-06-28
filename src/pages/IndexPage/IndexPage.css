@@ -1,0 +1,47 @@
+/* IndexPage specific styles */
+.index-page {
+  min-height: 100vh;
+  background-color: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+}
+
+.index-page__content {
+  padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+  background-color: var(--tg-theme-bg-color);
+}
+
+.index-page__content > .header {
+  margin-bottom: var(--spacing-md);
+}
+
+.index-page__categories {
+  margin-top: var(--spacing-md);
+}
+
+.index-page__section-title {
+  margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+}
+
+.index-page__demo-block {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--tg-theme-secondary-bg-color);
+  border-radius: var(--border-radius-md);
+}
+
+.index-page__demo-title {
+  color: var(--tg-theme-text-color);
+  margin: 0 0 var(--spacing-md) 0;
+  font-size: var(--spacing-md);
+}
+
+.index-page__demo-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.index-page__demo-link {
+  color: var(--tg-theme-link-color);
+  text-decoration: none;
+} 

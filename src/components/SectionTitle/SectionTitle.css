@@ -1,0 +1,9 @@
+.section-title {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-caption);
+  line-height: var(--line-height-caption);
+  color: var(--tg-theme-subtitle-text-color);
+  text-transform: uppercase;
+  margin: 0;
+} 
