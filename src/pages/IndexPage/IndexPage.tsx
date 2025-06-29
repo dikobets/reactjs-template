@@ -79,50 +79,6 @@ export const IndexPage: FC = () => {
             recipes={recentRecipes}
             onRecipeClick={handleRecipeClick}
           />
-          
-          <div className="index-page__demo-block">
-            <h3 className="index-page__demo-title">
-              Development Demo
-            </h3>
-            <div className="index-page__demo-links">
-              <Link 
-                to="/recipe-card-demo"
-                className="index-page__demo-link"
-              >
-                → Recipe Card States Demo
-              </Link>
-              <Link 
-                to="/recipe-list-demo"
-                className="index-page__demo-link"
-              >
-                → Recipe List Demo
-              </Link>
-              <Link 
-                to="/launch-params"
-                className="index-page__demo-link"
-              >
-                → Launch Params
-              </Link>
-              <Link 
-                to="/theme-params"
-                className="index-page__demo-link"
-              >
-                → Theme Params
-              </Link>
-              <Link 
-                to="/ton-connect"
-                className="index-page__demo-link"
-              >
-                → TON Connect
-              </Link>
-              <Link 
-                to="/debug-auth"
-                className="index-page__demo-link"
-              >
-                → 🔍 Debug Auth
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
     </Page>

@@ -16,9 +16,9 @@ export function App() {
       platform={['macos', 'ios'].includes(lp.tgWebAppPlatform) ? 'ios' : 'base'}
     >
       <UserProvider>
-        <HashRouter>
+      <HashRouter>
           <Suspense fallback={<div>Loading...</div>}>
-            <Routes>
+        <Routes>
               {routes.map((route) => (
                 <Route 
                   key={route.path} 
@@ -26,10 +26,10 @@ export function App() {
                   Component={wrapWithProtection(route.Component, route.protected || false)}
                 />
               ))}
-              <Route path="*" element={<Navigate to="/"/>}/>
-            </Routes>
+          <Route path="*" element={<Navigate to="/"/>}/>
+        </Routes>
           </Suspense>
-        </HashRouter>
+      </HashRouter>
       </UserProvider>
     </AppRoot>
   );

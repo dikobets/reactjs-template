@@ -20,10 +20,12 @@ declare global {
   interface Window {
     Telegram?: {
       WebApp?: {
+        initDataUnsafe?: any;
         colorScheme: string;
         themeParams: Record<string, string>;
         enableClosingConfirmation: () => void;
         onEvent: (eventType: string, callback: () => void) => void;
+        ready: () => void;
       };
     };
   }
@@ -36,27 +38,58 @@ interface InitOptions {
 }
 
 /**
+ * Waits for Telegram WebApp to be available
+ */
+function waitForTelegramWebApp(): Promise<void> {
+  return new Promise((resolve) => {
+    if (window.Telegram?.WebApp) {
+      resolve();
+      return;
+    }
+
+    const checkInterval = setInterval(() => {
+      if (window.Telegram?.WebApp) {
+        clearInterval(checkInterval);
+        resolve();
+      }
+    }, 100);
+
+    // Fallback timeout after 5 seconds
+    setTimeout(() => {
+      console.warn('⚠️ Telegram WebApp did not load after 5 seconds.');
+      clearInterval(checkInterval);
+      resolve();
+    }, 5000);
+  });
+}
+
+/**
  * Initializes the application with the given options.
  * @param options - Configuration options for initialization
  */
 export async function init(options: InitOptions = {}) {
-  const { debug = false, eruda = false } = options;
+  const { debug = false, eruda: useEruda = false } = options;
 
   // Initialize Eruda for debugging if enabled
-  if (eruda) {
-    await initEruda();
+  if (useEruda) {
+    eruda.init();
+  }
+
+  // Wait for Telegram WebApp to load
+  await waitForTelegramWebApp();
+
+  // It's important to initialize the Telegram WebApp first.
+  if (window.Telegram?.WebApp) {
+    window.Telegram.WebApp.ready();
   }
 
   // Enable debug mode in Telegram WebApp if needed
-  if (debug && window.Telegram?.WebApp) {
-    window.Telegram.WebApp.enableClosingConfirmation();
+  if (debug) {
+    setDebug(true);
+    window.Telegram?.WebApp?.enableClosingConfirmation();
   }
 
-  // Initialize theme variables
-  initThemeVariables();
-
-  // Set @telegram-apps/sdk-react debug mode and initialize it.
-  setDebug(debug);
+  // Initialize the Telegram SDK.
   initSDK();
 
   // Telegram for macOS has a ton of bugs, including cases, when the client doesn't
@@ -97,58 +130,5 @@ export async function init(options: InitOptions = {}) {
   mountViewport.isAvailable() && mountViewport().then(() => {
     bindThemeParamsCssVars();
     bindViewportCssVars();
-  });
-}
-
-/**
- * Initializes Eruda debugging tool
- */
-async function initEruda() {
-  // Initialize Eruda only if it's not already initialized
-  if (!document.querySelector('#eruda')) {
-    eruda.init();
-    
-    // Position Eruda at the bottom right corner
-    const el = document.querySelector('.eruda-container');
-    if (el instanceof HTMLElement) {
-      el.style.right = '0';
-      el.style.left = 'auto';
-      el.style.bottom = '0';
-    }
-  }
-}
-
-/**
- * Initializes theme variables from Telegram WebApp
- */
-function initThemeVariables() {
-  if (!window.Telegram?.WebApp) {
-    console.warn('Telegram WebApp is not available');
-    return;
-  }
-
-  const webApp = window.Telegram.WebApp;
-
-  // Get theme params
-  const colorScheme = webApp.colorScheme;
-  const themeParams = webApp.themeParams;
-
-  // Set color scheme
-  document.documentElement.setAttribute('data-theme', colorScheme);
-
-  // Set theme variables
-  Object.entries(themeParams).forEach(([key, value]) => {
-    document.documentElement.style.setProperty(`--tg-${key}`, value);
-  });
-
-  // Subscribe to theme changes
-  webApp.onEvent('themeChanged', () => {
-    const newColorScheme = webApp.colorScheme;
-    const newThemeParams = webApp.themeParams;
-
-    document.documentElement.setAttribute('data-theme', newColorScheme);
-    Object.entries(newThemeParams).forEach(([key, value]) => {
-      document.documentElement.style.setProperty(`--tg-${key}`, value);
-    });
   });
 }
