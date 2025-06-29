@@ -1,4 +1,5 @@
 import { lazy, ComponentType, JSX } from 'react';
+import { ProtectedRoute } from '@/components/ProtectedRoute';
 
 // Core application pages
 const IndexPage = lazy(() => import('@/pages/IndexPage/IndexPage'));
@@ -18,6 +19,7 @@ interface Route {
   Component: ComponentType;
   title?: string;
   icon?: JSX.Element;
+  protected?: boolean;
 }
 
 export const routes: Route[] = [
@@ -27,8 +29,8 @@ export const routes: Route[] = [
   { path: '/theme-params', Component: ThemeParamsPage, title: 'Theme Params' },
   { path: '/recipe-card-demo', Component: RecipeCardDemo, title: 'Recipe Card Demo' },
   { path: '/recipe-list-demo', Component: RecipeListDemo, title: 'Recipe List Demo' },
-  { path: '/recipe/:id', Component: RecipePage },
-  { path: '/category/:categoryName', Component: CategoryPage },
+  { path: '/recipe/:id', Component: RecipePage, protected: true },
+  { path: '/category/:categoryName', Component: CategoryPage, protected: true },
   {
     path: '/ton-connect',
     Component: TONConnectPage,
@@ -53,3 +55,16 @@ export const routes: Route[] = [
     ),
   },
 ];
+
+// Helper function to wrap component with ProtectedRoute if needed
+export const wrapWithProtection = (Component: ComponentType, isProtected: boolean) => {
+  if (!isProtected) {
+    return Component;
+  }
+  
+  return () => (
+    <ProtectedRoute>
+      <Component />
+    </ProtectedRoute>
+  );
+};

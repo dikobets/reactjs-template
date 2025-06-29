@@ -122,6 +122,6 @@ export const RecipeCardDemo: FC = () => {
       </div>
     </div>
   );
-};
+}; 
 
 export default RecipeCardDemo; 

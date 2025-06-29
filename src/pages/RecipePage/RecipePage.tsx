@@ -53,6 +53,6 @@ export const RecipePage: FC = () => {
       </div>
     </Page>
   );
-};
+}; 
 
 export default RecipePage; 

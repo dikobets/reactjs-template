@@ -41,6 +41,7 @@ export const IndexPage: FC = () => {
 
   const handleCategoryClick = (category: Category) => {
     console.log('Clicked category:', category);
+    navigate(`/category/${category.title}`);
   };
 
   const handleSearchChange = (value: string) => {
