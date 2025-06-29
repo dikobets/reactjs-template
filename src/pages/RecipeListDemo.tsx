@@ -186,4 +186,6 @@ export const RecipeListDemo: FC = () => {
       </div>
     </div>
   );
-}; 
+};
+
+export default RecipeListDemo; 

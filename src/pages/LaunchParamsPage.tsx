@@ -26,3 +26,5 @@ export const LaunchParamsPage: FC = () => {
     </Page>
   );
 };
+
+export default LaunchParamsPage;

@@ -121,3 +121,5 @@ export const IndexPage: FC = () => {
     </Page>
   );
 };
+
+export default IndexPage;

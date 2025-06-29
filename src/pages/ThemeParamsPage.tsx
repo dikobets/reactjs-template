@@ -27,3 +27,5 @@ export const ThemeParamsPage: FC = () => {
     </Page>
   );
 };
+
+export default ThemeParamsPage;

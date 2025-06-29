@@ -80,3 +80,5 @@ export const InitDataPage: FC = () => {
     </Page>
   );
 };
+
+export default InitDataPage;

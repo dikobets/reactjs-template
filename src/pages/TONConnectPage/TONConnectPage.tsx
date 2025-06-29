@@ -105,3 +105,5 @@ export const TONConnectPage: FC = () => {
     </Page>
   );
 };
+
+export default TONConnectPage;

@@ -28,4 +28,6 @@ export const CategoryPage: FC = () => {
       </div>
     </Page>
   );
-}; 
+};
+
+export default CategoryPage; 

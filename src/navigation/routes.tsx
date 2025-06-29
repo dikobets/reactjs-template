@@ -1,14 +1,17 @@
-import type { ComponentType, JSX } from 'react';
+import { lazy, ComponentType, JSX } from 'react';
 
-import { IndexPage } from '@/pages/IndexPage/IndexPage';
-import { InitDataPage } from '@/pages/InitDataPage.tsx';
-import { LaunchParamsPage } from '@/pages/LaunchParamsPage.tsx';
-import { ThemeParamsPage } from '@/pages/ThemeParamsPage.tsx';
-import { TONConnectPage } from '@/pages/TONConnectPage/TONConnectPage';
-import { RecipeCardDemo } from '@/pages/RecipeCardDemo.tsx';
-import { RecipeListDemo } from '@/pages/RecipeListDemo.tsx';
-import { RecipePage } from '@/pages/RecipePage/RecipePage.tsx';
-import { CategoryPage } from '@/pages/CategoryPage/CategoryPage.tsx';
+// Core application pages
+const IndexPage = lazy(() => import('@/pages/IndexPage/IndexPage'));
+const CategoryPage = lazy(() => import('@/pages/CategoryPage/CategoryPage'));
+const RecipePage = lazy(() => import('@/pages/RecipePage/RecipePage'));
+
+// Development and demo pages
+const InitDataPage = lazy(() => import('@/pages/InitDataPage'));
+const LaunchParamsPage = lazy(() => import('@/pages/LaunchParamsPage'));
+const ThemeParamsPage = lazy(() => import('@/pages/ThemeParamsPage'));
+const TONConnectPage = lazy(() => import('@/pages/TONConnectPage/TONConnectPage'));
+const RecipeCardDemo = lazy(() => import('@/pages/RecipeCardDemo'));
+const RecipeListDemo = lazy(() => import('@/pages/RecipeListDemo'));
 
 interface Route {
   path: string;
