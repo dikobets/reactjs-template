@@ -115,6 +115,12 @@ export const IndexPage: FC = () => {
               >
                 → TON Connect
               </Link>
+              <Link 
+                to="/debug-auth"
+                className="index-page__demo-link"
+              >
+                → 🔍 Debug Auth
+              </Link>
             </div>
           </div>
         </div>

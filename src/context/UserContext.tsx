@@ -30,8 +30,12 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     // Initialize user data from Telegram WebApp
     const initializeUser = async () => {
+      console.log('🔄 UserContext: Starting user initialization...');
+      console.log('🔄 UserContext: initData:', initData);
+      
       try {
         if (initData && initData.user) {
+          console.log('✅ UserContext: Found user data in initData:', initData.user);
           const telegramUser = initData.user;
           
           const userData: User = {
@@ -43,15 +47,37 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
             photoUrl: telegramUser.photo_url,
           };
           
+          console.log('✅ UserContext: Setting user data:', userData);
           setUser(userData);
         } else {
-          // No Telegram user data available
-          setUser(null);
+          // Fallback for development when Telegram WebApp is not available
+          console.warn('⚠️ UserContext: No user data found in initData');
+          console.log('🔍 UserContext: initData structure:', {
+            hasInitData: !!initData,
+            hasUser: !!(initData && initData.user),
+            initDataKeys: initData ? Object.keys(initData) : 'no initData'
+          });
+          
+          // Check if we're in development mode and Telegram is not available
+          if (import.meta.env.DEV && !window.Telegram?.WebApp) {
+            console.log('🔧 UserContext: Development mode detected, using fallback auth');
+            const fallbackUser: User = {
+              id: 'dev-user-123',
+              username: 'devuser',
+              firstName: 'Development',
+              lastName: 'User',
+              languageCode: 'uk',
+            };
+            setUser(fallbackUser);
+          } else {
+            setUser(null);
+          }
         }
       } catch (error) {
-        console.error('Error initializing user:', error);
+        console.error('❌ UserContext: Error initializing user:', error);
         setUser(null);
       } finally {
+        console.log('🏁 UserContext: Initialization complete, setting loading to false');
         setIsLoading(false);
       }
     };

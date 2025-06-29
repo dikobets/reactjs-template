@@ -13,6 +13,7 @@ const ThemeParamsPage = lazy(() => import('@/pages/ThemeParamsPage'));
 const TONConnectPage = lazy(() => import('@/pages/TONConnectPage/TONConnectPage'));
 const RecipeCardDemo = lazy(() => import('@/pages/RecipeCardDemo'));
 const RecipeListDemo = lazy(() => import('@/pages/RecipeListDemo'));
+const DebugAuthPage = lazy(() => import('@/pages/DebugAuthPage'));
 
 interface Route {
   path: string;
@@ -54,6 +55,7 @@ export const routes: Route[] = [
       </svg>
     ),
   },
+  { path: '/debug-auth', Component: DebugAuthPage },
 ];
 
 // Helper function to wrap component with ProtectedRoute if needed
