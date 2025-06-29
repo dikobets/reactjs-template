@@ -1,0 +1,6 @@
+.ingredient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Corresponds to gap-0.5 in Tailwind */
+  width: 100%;
+} 

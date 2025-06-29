@@ -1,0 +1,17 @@
+.recipe-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-page__content {
+  padding: 0 16px;
+  background-color: var(--tg-theme-bg-color);
+}
+
+.recipe-page__content > .header {
+  margin-bottom: 16px;
+}
+
+.recipe-page__content > .divider {
+  margin: 16px 0;
+} 

@@ -1,0 +1,5 @@
+.divider {
+  height: 2px;
+  width: 100%;
+  background: repeating-linear-gradient(90deg, var(--tg-theme-section-separator-color), var(--tg-theme-section-separator-color) 4px, transparent 4px, transparent 8px);
+} 

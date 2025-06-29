@@ -1,0 +1,11 @@
+.category-page {
+  /* This class can be used for page-level background or min-height if needed */
+}
+
+.category-page__content {
+  padding: 0 16px 16px 16px;
+}
+
+.category-page__content > .header {
+  margin-bottom: 16px;
+} 

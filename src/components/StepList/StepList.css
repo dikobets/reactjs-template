@@ -1,0 +1,6 @@
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Corresponds to gap-2 in Tailwind for this context */
+  width: 100%;
+} 

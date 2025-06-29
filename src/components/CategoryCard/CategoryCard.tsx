@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './CategoryCard.css';
 
 export interface CategoryCardProps {
-  state?: 'skeleton' | 'default' | 'hover' | 'press';
+  state?: 'skeleton' | 'default';
   icon?: string;
   title?: string;
-  onClick?: () => void;
 }
 
-export const CategoryCard: React.FC<CategoryCardProps> = ({
+export const CategoryCard: FC<CategoryCardProps> = ({
   state = 'default',
   icon,
   title,
-  onClick,
 }) => {
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    if (onClick && state !== 'skeleton') {
-      onClick();
+    if (state !== 'skeleton' && title) {
+      navigate(`/category/${encodeURIComponent(title)}`);
     }
   };
 
@@ -37,7 +38,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
               {icon && (
                 <img 
                   src={icon} 
-                  alt="" 
+                  alt={title || ''} 
                   className="category-card__icon-image"
                 />
               )}

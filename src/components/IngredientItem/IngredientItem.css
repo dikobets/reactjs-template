@@ -1,0 +1,30 @@
+.ingredient-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px; /* gap-2 from Figma */
+  font-family: 'SF Pro', sans-serif;
+  font-size: 17px;
+  line-height: 22px;
+  color: var(--tg-theme-text-color);
+  font-weight: 400;
+  letter-spacing: -0.4px;
+}
+
+.ingredient-item__name {
+  /* Removed flex-grow: 1 to fix left alignment */
+}
+
+.ingredient-item__separator {
+  margin: 0 4px;
+}
+
+.ingredient-item__measurement {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ingredient-item__unit {
+  /* The margin is no longer needed as gap is used in the parent */
+} 

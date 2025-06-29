@@ -5,8 +5,10 @@ import { InitDataPage } from '@/pages/InitDataPage.tsx';
 import { LaunchParamsPage } from '@/pages/LaunchParamsPage.tsx';
 import { ThemeParamsPage } from '@/pages/ThemeParamsPage.tsx';
 import { TONConnectPage } from '@/pages/TONConnectPage/TONConnectPage';
-import { RecipeCardDemo } from '@/pages/RecipeCardDemo';
-import { RecipeListDemo } from '@/pages/RecipeListDemo';
+import { RecipeCardDemo } from '@/pages/RecipeCardDemo.tsx';
+import { RecipeListDemo } from '@/pages/RecipeListDemo.tsx';
+import { RecipePage } from '@/pages/RecipePage/RecipePage.tsx';
+import { CategoryPage } from '@/pages/CategoryPage/CategoryPage.tsx';
 
 interface Route {
   path: string;
@@ -18,10 +20,12 @@ interface Route {
 export const routes: Route[] = [
   { path: '/', Component: IndexPage },
   { path: '/init-data', Component: InitDataPage, title: 'Init Data' },
-  { path: '/theme-params', Component: ThemeParamsPage, title: 'Theme Params' },
   { path: '/launch-params', Component: LaunchParamsPage, title: 'Launch Params' },
+  { path: '/theme-params', Component: ThemeParamsPage, title: 'Theme Params' },
   { path: '/recipe-card-demo', Component: RecipeCardDemo, title: 'Recipe Card Demo' },
   { path: '/recipe-list-demo', Component: RecipeListDemo, title: 'Recipe List Demo' },
+  { path: '/recipe/:id', Component: RecipePage },
+  { path: '/category/:categoryName', Component: CategoryPage },
   {
     path: '/ton-connect',
     Component: TONConnectPage,
