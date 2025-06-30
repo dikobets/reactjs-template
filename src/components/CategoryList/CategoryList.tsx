@@ -44,7 +44,6 @@ export const CategoryList: React.FC<CategoryListProps> = ({
             state="default"
             icon={category.icon}
             title={category.title}
-            onClick={() => onCategoryClick?.(category)}
           />
         ))}
       </div>

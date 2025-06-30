@@ -2,6 +2,7 @@ import { lazy, ComponentType, JSX } from 'react';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 
 // Core application pages
+const WelcomePage = lazy(() => import('@/pages/WelcomePage/WelcomePage'));
 const IndexPage = lazy(() => import('@/pages/IndexPage/IndexPage'));
 const CategoryPage = lazy(() => import('@/pages/CategoryPage/CategoryPage'));
 const RecipePage = lazy(() => import('@/pages/RecipePage/RecipePage'));
@@ -15,7 +16,8 @@ interface Route {
 }
 
 export const routes: Route[] = [
-  { path: '/', Component: IndexPage },
+  { path: '/', Component: WelcomePage },
+  { path: '/home', Component: IndexPage, protected: true },
   { path: '/recipe/:id', Component: RecipePage, protected: true },
   { path: '/category/:categoryName', Component: CategoryPage, protected: true },
 ];
