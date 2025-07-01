@@ -79,6 +79,20 @@ export const IndexPage: FC = () => {
             recipes={recentRecipes}
             onRecipeClick={handleRecipeClick}
           />
+
+          {/* Debug посилання для розробки */}
+          <div style={{ marginTop: '40px', textAlign: 'center', paddingBottom: '20px' }}>
+            <Link 
+              to="/debug-hooks" 
+              style={{ 
+                color: '#8E8E93', 
+                fontSize: '14px', 
+                textDecoration: 'none'
+              }}
+            >
+              🔧 Debug Hooks
+            </Link>
+          </div>
         </div>
       </div>
     </Page>
